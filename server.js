@@ -1,28 +1,34 @@
-const qrcode = require('qrcode-terminal');
-const convertUrl = require('./teste')
+const qrcode = require('qrcode-terminal')
+const posts = require('./src/posts')
+const status = require('./src/status')
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client, LocalAuth } = require('whatsapp-web.js')
 const client = new Client({
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth(),
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 });
 
-const names = {
-    arnaldo: '5522988223236@c.us',
-    slaney: '5522996015586@c.us',
-}
+let onOff = []
 
 client.on('qr', qr => {
-    qrcode.generate(qr, { small: true });
+    qrcode.generate(qr, { small: true })
 });
 
 client.on('ready', () => {
-    console.log('Client is ready!');
+    console.log('Client is ready!')
 });
 
 client.initialize();
 
 client.on('message', message => {
-    if (message.author === names.slaney) {
-        message.reply('Te levantei até onde pude.')
+    if (message.body.startsWith('/slaneron')) {
+        onOff = []
+        onOff.push(true)
     }
+    if (message.body.startsWith('/slaneroff')) {
+        onOff = []
+        onOff.push(false)
+    }
+    posts(message, onOff)
+    status(message)
 })

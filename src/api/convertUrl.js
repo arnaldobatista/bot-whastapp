@@ -1,5 +1,4 @@
-const request = require('request');
-
+const request = require('request')
 
 module.exports = async function convertUrl(url) {
     try {
@@ -17,19 +16,24 @@ module.exports = async function convertUrl(url) {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(res.body)
+                    const respondeObj = JSON.parse(res.body)
+
+                    if (respondeObj.code === 102) {
+                        console.log('Não é possivel baixar esse arquivo')
+                        
+                        resolve('Filho, não tem como baixar isso. Vamos dobrar hoje?')
+                        
+                        return
+                    }
+
+                    resolve(respondeObj.url[0].url)
                 }
-            });
-        });
-        
-        const respondeObj = JSON.parse(response)
-        if (respondeObj.code === 102) {
-            console.log('Não é possivel baixar esse arquivo')
-            return
-        }
-        console.log(respondeObj.url[0].url)
+            })
+        })
+
+        return response
     } catch (error) {
-        console.error(error);
+        console.error(error)
     }
 }
 
