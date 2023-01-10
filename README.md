@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="400px" max-width="400px" width="400px" align="right" alt="Computador iuriCode">
+<img src="https://github.com/arnaldobatista/bot-whastapp/blob/master/src/public/img/3D-WhatsApp-logo-transparent-background-PNG.png" min-width="400px" max-width="400px" width="400px" align="right" alt="Computador iuriCode">
 
 <h3> 🚧 &nbsp;Sobre o projeto </h3>
 
