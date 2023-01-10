@@ -23,3 +23,5 @@
 [![Linkedin: Arnaldo Carpi](https://img.shields.io/badge/-arnaldocarpi-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/arnaldocarpi)](https://www.linkedin.com/in/arnaldocarpi)
 [![Gmail Badge](https://img.shields.io/badge/-arnaldo.carpi@icloud.com-006bed?style=flat-square&logo=apple&logoColor=white&link=mailto:arnaldo.carpi@icloud.com)](mailto:arnaldo.carpi@icloud.com)
 [![GitHub Arnaldo Carpi]( https://img.shields.io/github/followers/VanessaSwerts?label=follow&style=social)](https://github.com/arnaldocarpi)
+
+Em breve disponibilizarei os comandos do bot para whatsapp.
