@@ -18,10 +18,8 @@ module.exports = async function convertUrl(url) {
                 } else {
                     const respondeObj = JSON.parse(res.body)
 
-                    if (respondeObj.code === 102) {
-                        console.log('Não é possivel baixar esse arquivo')
-                        
-                        resolve('Filho, não tem como baixar isso. Vamos dobrar hoje?')
+                    if (respondeObj.code === 102) {                        
+                        resolve('Não é possivel baixar esse arquivo')
                         
                         return
                     }
