@@ -2,7 +2,7 @@
 
 <h3> 🚧 &nbsp;Sobre o projeto </h3>
 
-- 🤔 &nbsp; Nesse projeto estou desenvolvendo um bot para mensagens de whatsapp. Tando mensagenss privadas como grupos.
+- 🤔 &nbsp; Nesse projeto estou desenvolvendo um bot para mensagens de whatsapp. Tando mensagens privadas como grupos.
 
 <h3> :rocket: &nbsp;O que foi usado? </h3>
   
