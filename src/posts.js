@@ -1,11 +1,10 @@
-const convertUrl = require('./api/convertUrl')
+const urlDownload = require('./api/urlDownload')
 
-module.exports = function posts(message /* , onOff */) {
-    async function baixar(message) {
+module.exports = class Posts {
+    async baixar(message) {
         if (message.body.startsWith('/baixar')) {
             const link = message.body.split(' ')[1]
             const linkTrue = link.split('/')
-            console.log(linkTrue)
 
             if (linkTrue[3] === 'p') {
                 message.reply(`Não é possível baixar imagens no momento.`)
@@ -27,9 +26,8 @@ module.exports = function posts(message /* , onOff */) {
                 return
             }
 
-            const finalLink = await convertUrl(link)
+            const finalLink = await urlDownload(link)
             message.reply(finalLink)
         }
     }
-    baixar(message)
 }
