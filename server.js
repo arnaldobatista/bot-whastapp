@@ -6,8 +6,8 @@ const posts = new Posts
 
 const { Client, LocalAuth } = require('whatsapp-web.js')
 const client = new Client({
-    authStrategy: new LocalAuth()
-    // executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    authStrategy: new LocalAuth(),
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 });
 
 // let onOff = []
@@ -23,15 +23,6 @@ client.on('ready', () => {
 client.initialize();
 
 client.on('message', message => {
-    // if (message.body.startsWith('/on')) {
-    //     onOff = []
-    //     onOff.push(true)
-    // }
-    // if (message.body.startsWith('/off')) {
-    //     onOff = []
-    //     onOff.push(false)
-    // }
-    // console.log(message)
-    posts.baixar(message)
+    posts.download(message)
     status(message)
 })

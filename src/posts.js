@@ -1,7 +1,7 @@
 const urlDownload = require('./api/urlDownload')
 
 module.exports = class Posts {
-    async baixar(message) {
+    async download(message) {
         if (message.body.startsWith('/baixar')) {
             const link = message.body.split(' ')[1]
             const linkTrue = link.split('/')
