@@ -10,8 +10,6 @@ const client = new Client({
     executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 });
 
-// let onOff = []
-
 client.on('qr', qr => {
     qrcode.generate(qr, { small: true })
 });
