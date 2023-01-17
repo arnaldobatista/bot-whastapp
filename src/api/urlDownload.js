@@ -24,14 +24,15 @@ async function urlDownload(url, numberImg) {
                         return
                     }
 
-                    // baixar instagram
+                    // baixar imagem com mais de um item do instagram
                     if (respondeObj.medias) {
-                        numberImgFinal = numberImg - 1
-                        const link = respondeObj.medias[numberImgFinal]
+                        const numberImgFinal = numberImg - 1
 
+                        var link = respondeObj.medias
+                        link.shift()
+                        const linkFinal = link[numberImgFinal]
 
-                        console.log(link.url)
-                        resolve(link.url)
+                        resolve(linkFinal.url)
                         return
                     }
 
