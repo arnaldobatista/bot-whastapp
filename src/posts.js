@@ -3,48 +3,64 @@ const urlDownload = require('./api/urlDownload')
 module.exports = class Posts {
     async download(message) {
         if (message.body.startsWith('/baixar')) {
-            const link = message.body.split(' ')[1]
-            const numberImg = Number(message.body.split(' ')[2])
-            console.log(numberImg === Number)
-            const linkTrue = link.split('/')
-            // console.log(linkTrue)
-            
-            // erro de links
-            if (linkTrue[2] === 'music.youtube.com') {
+            // pegar informações da requisição mensagem
+            const url = message.body.split(' ')[1]
+            const numberImg = Number(message.body.split(' ')[2]) - 1
+            console.log(numberImg)
+            const checkLink = url.split('/')
+            // final pegar informações da requisição mensagem
+
+            // tratamento link antes api
+            if (checkLink[2] === 'music.youtube.com') {
                 message.reply(`Não é possível baixar musícas no momento.`)
                 return
             }
 
-            if (linkTrue[0] !== 'https:') {
+            if (checkLink[0] !== 'https:') {
                 message.reply(`Insira um link valido.`)
                 return
             }
-            
-// erros Instagram
-            if (!message.body.split(' ')[2]) {
-                message.reply(`Não é possível baixar imagens unicas do instagram.
-                Caso queira baixar uma publicação com varias imagens, use "/baixar https://www.link.com 3" onde o numero sera qual imagem você quer baixar.`)
+            // final tratamento link antes api
+            const callAPI = await urlDownload(url)
+            console.log(callAPI)
+            // erros Instagram
+            if (callAPI === 'error') {
+                message.reply('Não é possível baixar esse link!')
+                return
             }
-            
-// erros youtube
-            // console.log(respondeObj) // { error: 'Unknown error occurred.' } // baixando imagem twitter
 
-            //yt music até gera links, mas não deixa ter acessos
-// erros twitter
+            // erros youtube
+            // erros twitter
+            // erros facebook
 
-// baixar
-//baixar instagram
-            // console.log(respondeObj.medias[1].url) // https://www.instagram.com/reel/CnagCI8DDO_/?utm_source=ig_web_copy_link -- baixar esse tipo de rells
-            // console.log(respondeObj.medias[1].url) // https://www.instagram.com/p/CmWidY4PtNw/ -- baixar esse tipo de stores
-            // console.log(respondeObj.medias) // mais de uma imagem do instagram
-//baixar youtube
-// console.log(respondeObj.medias[20].url) // video youtube // videos no YT não tem padrao. é preciso fazer um diferente esquema, verifica a quality e a extension. de extension, pegar mp4 d cd qualidade, pegar a melhor
-//baixar twitter
+            // baixar instagram
+            if (callAPI.url.split('/')[3] === 'p') {
+                if (numberImg < 0 || numberImg == undefined) {
+                    message.reply(`*Não é possível baixar imagens unicas do instagram!*
+
+Caso queira baixar uma publicação com varias imagens ou vídeos, use: 
+*/baixar https://www.link.com 3*
+onde o numero será qual imagem você quer baixar.
+
+Caso queria baixar um vídeo, use:
+*/baixar https://www.link.com video*
+`)
+                    return
+                }
+
+                // var link = callAPI.medias
+                // link.shift()
+                // const linkFinal = link[numberImg]
+                // console.log(linkFinal.url)
+                // return
+            }
+            // baixar youtube
+            // baixar twitter
+            // facebook
 
 
 
-            const finalLink = await urlDownload(link, numberImg)
-            message.reply(finalLink)
+            // console.log(callAPI)
         }
     }
 }

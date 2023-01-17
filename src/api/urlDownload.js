@@ -1,6 +1,6 @@
 const request = require('request')
 
-async function urlDownload(url, numberImg) {
+async function urlDownload(url) {
     try {
         const options = {
             url: 'https://ssyoutube.online/wp-json/aio-dl/video-data/',
@@ -18,31 +18,10 @@ async function urlDownload(url, numberImg) {
                     console.log(error)
                 } else {
                     const respondeObj = JSON.parse(res.body)
-                    // console.log(respondeObj)
                     if (respondeObj.error) {
-                        resolve(`Não é possível baixar esse link.`)
+                        resolve(`error`)
                         return
                     }
-
-                    // baixar imagem com mais de um item do instagram
-                    if (respondeObj.medias) {
-                        const numberImgFinal = numberImg - 1
-
-                        var link = respondeObj.medias
-                        link.shift()
-                        const linkFinal = link[numberImgFinal]
-
-                        resolve(linkFinal.url)
-                        return
-                    }
-
-
-
-
-
-
-
-
                     resolve(respondeObj)
                 }
             })
