@@ -19,6 +19,7 @@ async function urlDownload(url) {
                 } else {
                     const respondeObj = JSON.parse(res.body)
                     if (respondeObj.error) {
+                        console.log(respondeObj.error)
                         resolve(`error`)
                         return
                     }

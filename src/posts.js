@@ -5,8 +5,9 @@ module.exports = class Posts {
         if (message.body.startsWith('/baixar')) {
             // pegar informações da requisição mensagem
             const url = message.body.split(' ')[1]
-            const numberImg = Number(message.body.split(' ')[2]) - 1
-            console.log(numberImg)
+            var numberImg = ''
+            message.body.split(' ')[2] === undefined ? numberImg = undefined : numberImg = message.body.split(' ')[2]
+
             const checkLink = url.split('/')
             // final pegar informações da requisição mensagem
 
@@ -22,7 +23,7 @@ module.exports = class Posts {
             }
             // final tratamento link antes api
             const callAPI = await urlDownload(url)
-            console.log(callAPI)
+            console.log(callAPI.medias)
             // erros Instagram
             if (callAPI === 'error') {
                 message.reply('Não é possível baixar esse link!')
@@ -34,8 +35,9 @@ module.exports = class Posts {
             // erros facebook
 
             // baixar instagram
-            if (callAPI.url.split('/')[3] === 'p') {
-                if (numberImg < 0 || numberImg == undefined) {
+
+            if (url.split('/')[3] === 'p') {
+                if (!numberImg) {
                     message.reply(`*Não é possível baixar imagens unicas do instagram!*
 
 Caso queira baixar uma publicação com varias imagens ou vídeos, use: 
@@ -43,15 +45,14 @@ Caso queira baixar uma publicação com varias imagens ou vídeos, use:
 onde o numero será qual imagem você quer baixar.
 
 Caso queria baixar um vídeo, use:
-*/baixar https://www.link.com video*
+*/baixar https://www.link.com 1*
 `)
                     return
                 }
 
-                // var link = callAPI.medias
-                // link.shift()
-                // const linkFinal = link[numberImg]
-                // console.log(linkFinal.url)
+                var link = callAPI.medias
+                const linkFinal = link[numberImg]
+                message.reply(linkFinal.url)
                 // return
             }
             // baixar youtube
