@@ -3,12 +3,12 @@ const request = require('request')
 async function urlDownload(url) {
     try {
         const options = {
-            url: 'https://ssyoutube.online/wp-json/aio-dl/video-data/',
+            url: `https://api.ummy.net/api/convert?url=${url}`,
             headers: {
                 'content-type': 'application/json'
             },
             method: 'POST',
-            body: `{"url":"${url}"}`
+            body: null
         }
         
         const response = await new Promise((resolve, reject) => {
@@ -23,6 +23,7 @@ async function urlDownload(url) {
                         resolve(`error`)
                         return
                     }
+                    console.log(respondeObj)
                     resolve(respondeObj)
                 }
             })
@@ -33,11 +34,9 @@ async function urlDownload(url) {
         if (error.code === 'ECONNREFUSED') {
             return "API em manuntenção."
         }
-        console.error(error)
     }
 }
 
-// const url = 'https://www.instagram.com/p/CncE8VIuNB5/'
+// const url = 'https://www.youtube.com/watch?v=HgVkG_WjcOM&list=RDAMVMSYM-RJwSGQ8'
 // urlDownload(url)
-
 module.exports =  urlDownload
