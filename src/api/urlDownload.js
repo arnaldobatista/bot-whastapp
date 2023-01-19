@@ -16,6 +16,7 @@ async function urlDownload(url) {
                 if (error) {
                     reject(error)
                     console.log(error)
+                    return
                 } else {
                     const respondeObj = JSON.parse(res.body)
                     if (respondeObj.error) {
@@ -23,7 +24,6 @@ async function urlDownload(url) {
                         resolve(`error`)
                         return
                     }
-                    console.log(respondeObj)
                     resolve(respondeObj)
                 }
             })
@@ -32,6 +32,7 @@ async function urlDownload(url) {
         return response
     } catch (error) {
         if (error.code === 'ECONNREFUSED') {
+            console.log(error)
             return "API em manuntenção."
         }
     }
