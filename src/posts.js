@@ -9,7 +9,24 @@ module.exports = class Posts {
 
             const objRetun = await urlDownload(url)
             console.log(objRetun)
-
+            //checks
+            //dowload YT
+            if (urlType[2] === 'www.youtube.com') {
+                return
+            }
+            //dowload YTM
+            if (urlType[2] === 'music.youtube.com') {
+                return
+            }
+            //dowload twitter
+            if (urlType[2] === 'twitter.com') {
+                return
+            }
+            //dowload tiktok 
+            if (urlType[2] === 'www.tiktok.com') {
+                return
+            }
+            //dowload instagram
             if (urlType[2] === 'www.instagram.com') {
                 if (objRetun.url) {
                     if (urlType[3] === 'stories') {
@@ -38,27 +55,6 @@ O numero no final corresponde a postagem que você quer baixar.
                     message.reply(link)
                 }
             }
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-            
-            
-            
-            
-            
-            
         }
     }
 }
