@@ -2,7 +2,7 @@
 
 <h3> 🚧 &nbsp;Sobre o projeto </h3>
 
-- 🤔 &nbsp; Nesse projeto estou desenvolvendo um bot para mensagens de whatsapp. Tando mensagens privadas como grupos.
+- 🤔 &nbsp; Nesse projeto estou desenvolvendo um bot para poder baixar vídeos e imagens das principais redes sociais.
 
 <h3> :rocket: &nbsp;O que foi usado? </h3>
   
@@ -20,8 +20,8 @@
 
 <h3> :earth_americas: &nbsp;Onde me encontrar: </h3> 
 
-[![Linkedin: Arnaldo Carpi](https://img.shields.io/badge/-arnaldocarpi-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/arnaldocarpi)](https://www.linkedin.com/in/arnaldocarpi)
+[![Linkedin: Arnaldo Batista](https://img.shields.io/badge/-arnaldbatista-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/arnaldocarpi)](https://www.linkedin.com/in/arnaldocarpi)
 [![Gmail Badge](https://img.shields.io/badge/-arnaldo.carpi@icloud.com-006bed?style=flat-square&logo=apple&logoColor=white&link=mailto:arnaldo.carpi@icloud.com)](mailto:arnaldo.carpi@icloud.com)
-[![GitHub Arnaldo Carpi]( https://img.shields.io/github/followers/VanessaSwerts?label=follow&style=social)](https://github.com/arnaldocarpi)
+[![GitHub Arnaldo Batista]( https://img.shields.io/github/followers/VanessaSwerts?label=follow&style=social)](https://github.com/arnaldocarpi)
 
 Em breve disponibilizarei os comandos do bot para whatsapp.
