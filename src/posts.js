@@ -3,19 +3,18 @@ const urlDownload = require('./api/urlDownload')
 module.exports = class Posts {
     async download(message) {
         if (message.body.startsWith('/baixar')) {
-            const url = message.body.split(' ')[1]
+            let url = message.body.split(' ')[1].split('/')[2] === 'music.youtube.com' ? `https://www.youtube.com/${message.body.split(' ')[1].split('/')[3]}` : message.body.split(' ')[1]
+            console.log(url)
             const numberImg = message.body.split(' ')[2]
             const urlType = url.split('/')
 
             const objRetun = await urlDownload(url)
-            console.log(objRetun)
+
             //checks
             //dowload YT
             if (urlType[2] === 'www.youtube.com') {
-                return
-            }
-            //dowload YTM
-            if (urlType[2] === 'music.youtube.com') {
+                const link = objRetun.url[1].url
+                message.reply(link)
                 return
             }
             //dowload twitter
