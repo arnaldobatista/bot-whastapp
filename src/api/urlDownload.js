@@ -18,13 +18,24 @@ async function urlDownload(url) {
                     console.log(error)
                     return
                 } else {
-                    const respondeObj = JSON.parse(res.body)
-                    if (respondeObj.error) {
-                        console.log(respondeObj.error)
-                        resolve(`error`)
+                    try{
+                        const contentType = res.headers['content-type']
+                        if(contentType.includes('application/json')){
+                            const respondeObj = JSON.parse(res.body)
+                            if (respondeObj.error) {
+                                console.log(respondeObj.error)
+                                resolve(`error`)
+                                return
+                            }
+                            resolve(respondeObj)
+                        }else{
+                            resolve(`API em manuntenção.`)
+                            return
+                        }
+                    }catch(e){
+                        resolve(`API em manuntenção.`)
                         return
                     }
-                    resolve(respondeObj)
                 }
             })
         })
