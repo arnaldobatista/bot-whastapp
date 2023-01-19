@@ -23,10 +23,8 @@ module.exports = class Posts {
             }
             //dowload twitter
             if (urlType[2] === 'twitter.com') {
-                if (objRetun.url) {
                     const link = objRetun.url[0].url
                     message.reply(link)
-                }
             }
 
             if (objRetun[0]) {
@@ -47,6 +45,8 @@ module.exports = class Posts {
             }
             //dowload tiktok 
             if (urlType[2] === 'www.tiktok.com') {
+                const link = objRetun.url[0].url
+                message.reply(link)
                 return
             }
             //dowload instagram
