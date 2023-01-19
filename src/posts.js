@@ -52,7 +52,8 @@ module.exports = class Posts {
             //dowload instagram
             if (urlType[2] === 'www.instagram.com') {
                 if (objRetun.url) {
-                    if (urlType[3] === 'stories') {
+                    console.log(objRetun.url.length)
+                    if (objRetun.url.length >= 2) {
                         const link = objRetun.url[1].url
                         message.reply(link)
                         return
