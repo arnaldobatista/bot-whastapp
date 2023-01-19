@@ -8,6 +8,7 @@ module.exports = class Posts {
             const urlType = url.split('/')
 
             const objRetun = await urlDownload(url)
+            console.log(objRetun)
 
             //checks
             if (objRetun.code === 102) {
@@ -22,60 +23,58 @@ module.exports = class Posts {
             }
             //dowload twitter
             if (urlType[2] === 'twitter.com') {
-                console.log(objRetun)
-
                 if (objRetun.url) {
                     const link = objRetun.url[0].url
                     message.reply(link)
                 }
+            }
 
+            if (objRetun[0]) {
+                if (!numberImg) {
+                    message.reply(`Para baixar uma postagem com mais de um item use:
+                        
+                        */baixar https://www.link.com 1*
+                        
+                        O numero no final corresponde a postagem que você quer baixar.
+                        `)
+                    return
+                }
+
+                const numberArray = numberImg - 1
+                const link = objRetun[numberArray].url[0].url
+                message.reply(link)
+                return
+            }
+            //dowload tiktok 
+            if (urlType[2] === 'www.tiktok.com') {
+                return
+            }
+            //dowload instagram
+            if (urlType[2] === 'www.instagram.com') {
+                if (objRetun.url) {
+                    if (urlType[3] === 'stories') {
+                        const link = objRetun.url[1].url
+                        message.reply(link)
+                        return
+                    }
+                    const link = objRetun.url[0].url
+                    message.reply(link)
+                    return
+                }
                 if (objRetun[0]) {
                     if (!numberImg) {
                         message.reply(`Para baixar uma postagem com mais de um item use:
-    
+
 */baixar https://www.link.com 1*
 
-O numero no final corresponde a postagem que você quer baixar.
-                        `)
+O numero no final corresponde a postagem que você quer baixar.`)
                         return
                     }
+
                     const numberArray = numberImg - 1
                     const link = objRetun[numberArray].url[0].url
                     message.reply(link)
                     return
-                }
-                //dowload tiktok 
-                if (urlType[2] === 'www.tiktok.com') {
-                    return
-                }
-                //dowload instagram
-                if (urlType[2] === 'www.instagram.com') {
-                    if (objRetun.url) {
-                        if (urlType[3] === 'stories') {
-                            const link = objRetun.url[1].url
-                            message.reply(link)
-                            return
-                        }
-
-                        const link = objRetun.url[0].url
-                        message.reply(link)
-                    }
-
-                    if (objRetun[0]) {
-                        if (!numberImg) {
-                            message.reply(`Para baixar uma postagem com mais de um item use:
-    
-*/baixar https://www.link.com 1*
-
-O numero no final corresponde a postagem que você quer baixar.
-                        `)
-                            return
-                        }
-
-                        const numberArray = numberImg - 1
-                        const link = objRetun[numberArray].url[0].url
-                        message.reply(link)
-                    }
                 }
             }
         }
