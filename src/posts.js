@@ -1,4 +1,5 @@
 const urlDownload = require('./api/urlDownload')
+const convertUrl = require('./api/convertUrl')
 
 module.exports = class Posts {
     async download(message) {
@@ -18,10 +19,12 @@ module.exports = class Posts {
             //checks
             if (objRetun.code === 102) {
                 message.reply('A conversão falhou! Tente novamente ou tente outro link!')
+                console.log('error 102')
                 return
             }
 
             if (objRetun === 'API em manuntenção.') {
+                console.log('API em manuntenção.')
                 message.reply('A conversão falhou! Tente novamente ou tente outro link!')
                 return
             }
@@ -29,14 +32,23 @@ module.exports = class Posts {
             //dowload YT
             if (urlType[2] === 'www.youtube.com') {
                 const link = objRetun.url[1].url
-                message.reply(link)
+                const convertLink = await convertUrl(link)
+                message.reply(convertLink)
+                return
+            }
+            
+            if (urlType[2] === 'youtube.com') {
+                const link = objRetun.url[1].url
+                const convertLink = await convertUrl(link)
+                message.reply(convertLink)
                 return
             }
 
             //dowload twitter
             if (urlType[2] === 'twitter.com') {
-                    const link = objRetun.url[0].url
-                    message.reply(link)
+                const link = objRetun.url[0].url
+                const convertLink = await convertUrl(link)
+                message.reply(convertLink)
             }
 
             if (objRetun[0]) {
@@ -51,14 +63,16 @@ O numero no final corresponde a postagem que você quer baixar.`)
 
                 const numberArray = numberImg - 1
                 const link = objRetun[numberArray].url[0].url
-                message.reply(link)
+                const convertLink = await convertUrl(link)
+                message.reply(convertLink)
                 return
             }
 
             //dowload tiktok 
             if (urlType[2] === 'www.tiktok.com') {
                 const link = objRetun.url[0].url
-                message.reply(link)
+                const convertLink = await convertUrl(link)
+                message.reply(convertLink)
                 return
             }
 
@@ -68,11 +82,13 @@ O numero no final corresponde a postagem que você quer baixar.`)
                     console.log(objRetun.url.length)
                     if (objRetun.url.length >= 2) {
                         const link = objRetun.url[1].url
-                        message.reply(link)
+                        const convertLink = await convertUrl(link)
+                        message.reply(convertLink)
                         return
                     }
                     const link = objRetun.url[0].url
-                    message.reply(link)
+                    const convertLink = await convertUrl(link)
+                    message.reply(convertLink)
                     return
                 }
 
@@ -88,7 +104,8 @@ O numero no final corresponde a postagem que você quer baixar.`)
 
                     const numberArray = numberImg - 1
                     const link = objRetun[numberArray].url[0].url
-                    message.reply(link)
+                    const convertLink = await convertUrl(link)
+                    message.reply(convertLink)
                     return
                 }
             }

@@ -13,7 +13,7 @@ async function convertUrl(url) {
         
         const response = await new Promise((resolve, reject) => {
             request(options, (error, res, body) => {
-                const link = JSON.parse(res.body.data.tiny_url)
+                const link = JSON.parse(res.body).data.tiny_url
                 resolve(link)
             })
         })
@@ -23,6 +23,7 @@ async function convertUrl(url) {
     }
 }
 
-const url = 'https://www.youtube.com/watch?v=HgVkG_WjcOM&list=sssRDAMVMSYM-RJwSGQ8'
-convertUrl(url)
+// const url = 'https://www.youtube.com/watch?v=HgVkG_WjcOM&list=sssRDAMVMSYM-RJwSGQ8'
+// convertUrl(url)
+
 module.exports = convertUrl

@@ -33,6 +33,7 @@ async function urlDownload(url) {
                             return
                         }
                     }catch(e){
+                        console.log(e)
                         resolve(`API em manuntenção.`)
                         return
                     }
